@@ -5,12 +5,12 @@ grep -q "swapfile" /etc/fstab
 
 #if exists, delete it first.
 if [ $? -eq 0 ]; then
-        echo "swapfile found, deleting..."
+        echo "Swapfile found, deleting..."
         sed -i '/swapfile/d' /etc/fstab
         echo "3" > /proc/sys/vm/drop_caches
         swapoff -a
         rm -f /swapfile
-    echo "swapfile deleted!"
+    echo "Swapfile deleted!"
 fi
 
 grep -q "swapfile" /etc/fstab
@@ -22,7 +22,7 @@ if [ $? -ne 0 ]; then
         mkswap /swapfile
         swapon /swapfile
         echo '/swapfile none swap defaults 0 100' >> /etc/fstab
-         echo "swapfile successful created, checking information:"
+         echo "Swapfile successful created, checking information:"
          cat /proc/swaps
          cat /proc/meminfo | grep Swap
 fi
@@ -34,14 +34,14 @@ grep -q "swapfile" /etc/fstab
 
 #if exists, delete it first.
 if [ $? -eq 0 ]; then
-        echo -e "${Green}swapfile found, deleting...${Font}"
+        echo "Swapfile found, deleting..."
         sed -i '/swapfile/d' /etc/fstab
         echo "3" > /proc/sys/vm/drop_caches
         swapoff -a
         rm -f /swapfile
-    echo -e "${Green}swapfile deleted！${Font}"
+    echo -e "Swapfile deleted!"
 else
-        echo -e "${Red}swapfile not found，swap delete failed！${Font}"
+        echo -e "Swapfile not found，swap delete failed！"
 fi
 }
 
