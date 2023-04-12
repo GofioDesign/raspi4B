@@ -40,5 +40,5 @@ services:
       - ./mysql:/var/lib/mysql
 networks:
   default:
-    external:
-      name: npm
+    external: true
+    name: npm
