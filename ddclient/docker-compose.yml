@@ -12,5 +12,5 @@ services:
     restart: unless-stopped
 networks:
   default:
-    external:
-      name: npm
+    external: true
+    name: npm
