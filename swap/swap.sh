@@ -1,21 +1,4 @@
 #!/usr/bin/env bash
-
-#root permission
-root_need(){
-    if [[ $EUID -ne 0 ]]; then
-        echo "Error:This script must be run as root!"
-        exit 1
-    fi
-}
-
-#check ovz
-ovz_no(){
-    if [[ -d "/proc/vz" ]]; then
-        echo "Your VPS is based on OpenVZ，not supported!"
-        exit 1
-    fi
-}
-
 add_swap(){
 #check if exists swapfile
 grep -q "swapfile" /etc/fstab
@@ -63,10 +46,4 @@ fi
 }
 
 #Start
-main(){
-root_need
-ovz_no
 add_swap
-}
-
-main
