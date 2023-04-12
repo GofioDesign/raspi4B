@@ -34,7 +34,7 @@ grep -q "swapfile" /etc/fstab
 #if does not exist, create /swapfile
 if [ $? -ne 0 ]; then
         echo "Swapfile not found, creating swapfile"
-        sudo fallocate -l $(( $(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE)/(1024*512) ))M /swapfile
+        fallocate -l $(( ($(getconf _PHYS_PAGES) * $(getconf PAGE_SIZE)/(1024*512)) )) /swapfile
         chmod 600 /swapfile
         mkswap /swapfile
         swapon /swapfile
