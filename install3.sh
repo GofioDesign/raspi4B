@@ -21,6 +21,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 
 ##Do post install
 sudo groupadd docker
+exit
 sudo usermod -aG docker $USER
 newgrp docker
 docker run hello-world
